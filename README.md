@@ -8,4 +8,5 @@ Simple Steps to start the node server
 3. docker-compose up
 4. we can make some of pods as event consumer with .env parameter `KAFKA_TOPIC_SUBSCRIBER=true`, Other event producers as `KAFKA_TOPIC_SUBSCRIBER=false`. 
     This will enanle event driven distributed services infra.
-4. node start.js
+5. node start.js
+
