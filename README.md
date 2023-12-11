@@ -9,12 +9,12 @@ Social Media Analytical Platform is a Node.js Distributed Server for computation
 
 
 - [Features](#features)
-- [Start Analytical Platform](#start-server)
-  - [Start Seperate Consumer and Producer](#event-drive)
+- [Start Analytical Platform](#startAnalyticalPlatform)
+  - [Start Seperate Consumer and Producer](#startSeperateConsumerandProducer)
   - [Authorise Expernal APPs](#authorise-apps)
 - [Services](#services)
-  - [Post Content Service](#post_content_service)
-  - [Post Content Analysis Service](#post_content_analysis_service)
+  - [Post Content Service](#postContentService)
+  - [Post Content Analysis Service](#postContentAnalysisService)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -24,17 +24,21 @@ Social Media Analytical Platform is a Node.js Distributed Server for computation
 * Distributed event driven architecture
 * Microservice Data pattern
 * Kafka Node Stream Producer and Consumers having scalable topics
-* Integrated with scalable Mysql, Mongo, Redis, Inmemory clustors.
+* Integrated with scalable Mysql, Mongo, Redis, Inmemory clusters.
 * Services with user traking.
 * Redia publisher and suscriber model for Inmemory Cache handling.
 
 # Start Analytical Platform
 
-* Clone this Repo, It will require Nodejs (> v16). And run below Command
+* It requires Datebases connection as must to operate within services. So, we need to get Mysql, Mongo, Redis Server up. Also, Need to update Connections params in the `.env` files.
+* After Cloning this Repo, It will require Nodejs (> v16).
+* After that below commands will help to express server up.
+  
 1. `yarn install` 
 2. `export HOST_IP=$(ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }' | cut -f2 -d: | head -n1)`
 3. `docker-compose up`
 4. `node start.js`
+
 
 ## Start Seperate Consumer and Producer
 
