@@ -35,10 +35,11 @@ Social Media Analytical Platform is a Node.js Distributed Server for computation
 * After that below commands will help to get express server up.
 
 ```
-* `yarn install` 
-* `export HOST_IP=$(ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }' | cut -f2 -d: | head -n1)`
-* `docker-compose up`
-* `node start.js`
+  yarn install
+  export HOST_IP=$(ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }' | cut -f2 -d: | head -n1)
+  docker-compose up
+  node start.js
+
 ```
 
 ## Start Seperate Consumer and Producer
