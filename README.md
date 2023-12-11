@@ -19,10 +19,10 @@ Social Media Analytical Platform is a Node.js Distributed Server for computation
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Features
-* Microservice Node server
 * Scalable Services to create Social Media Content
 * Scalable Services to anaylysis Social Media Content
 * Distributed event driven architecture
+* Microservice Data pattern
 * Kafka Node Stream Producer and Consumers having scalable topics
 * Integrated with scalable Mysql, Mongo, Redis, Inmemory clustors.
 * Services with user traking.
