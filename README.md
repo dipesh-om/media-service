@@ -59,14 +59,10 @@ Post Content Service manages contents from external app. It takes contents with 
 ### Fetch post conetent API by postId
 
 ``` js
-curl --location --request GET 'localhost:4001/mediaService/api/v1/postContent/postId/5' \
+curl --location --request GET 'localhost:4001/mediaService/api/v1/postContent/postId/1' \
 --header 'Content-Type: application/json' \
 --header 'x-app-name: user-service' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MTYyMzkwMjIsImFwcF9uYW1lIjoidXNlci1zZXJ2aWNlIn0.W7WFHMtCObjxJBwQ8dXSpIhXzn6a-KOAxcQr4CEo7Ds' \
---data '{
-    "postId" : 3,
-    "content" : "Hey, Dipesh here!"
-}'
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MTYyMzkwMjIsImFwcF9uYW1lIjoidXNlci1zZXJ2aWNlIn0.W7WFHMtCObjxJBwQ8dXSpIhXzn6a-KOAxcQr4CEo7Ds'
 ```
 
 ### Create post conetent API 
@@ -78,7 +74,7 @@ curl --location 'localhost:4001/mediaService/api/v1/postContent/posts' \
 --header 'Content-Type: application/json' \
 --data '{
     "postId" : 1,
-    "content" : "Hey, First Conetent Created!"
+    "content" : "Hey, First Content Created!"
 }'
 ```
 
@@ -91,14 +87,10 @@ It basically listen/consumes events produces form content service. when ever a p
 ### Fetch API for post content analysis by postId
 
 ``` js
-curl --location --request GET 'localhost:4001/mediaService/api/v1/postContentAnalysis/postId/5' \
+curl --location --request GET 'localhost:4001/mediaService/api/v1/postContentAnalysis/postId/1' \
 --header 'Content-Type: application/json' \
 --header 'x-app-name: user-service' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MTYyMzkwMjIsImFwcF9uYW1lIjoidXNlci1zZXJ2aWNlIn0.W7WFHMtCObjxJBwQ8dXSpIhXzn6a-KOAxcQr4CEo7Ds' \
---data '{
-    "postId" : 3,
-    "content" : "Hey, Dipesh here!"
-}'
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MTYyMzkwMjIsImFwcF9uYW1lIjoidXNlci1zZXJ2aWNlIn0.W7WFHMtCObjxJBwQ8dXSpIhXzn6a-KOAxcQr4CEo7Ds'
 ```
 
 
