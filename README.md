@@ -32,13 +32,14 @@ Social Media Analytical Platform is a Node.js Distributed Server for computation
 
 * It requires Datebases connection as must to operate within services. So, we need to get Mysql, Mongo, Redis Server up. Also, Need to update Connections params in the `.env` files.
 * After Cloning this Repo, It will require Nodejs (> v16).
-* After that below commands will help to express server up.
-  
-1. `yarn install` 
-2. `export HOST_IP=$(ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }' | cut -f2 -d: | head -n1)`
-3. `docker-compose up`
-4. `node start.js`
+* After that below commands will help to get express server up.
 
+```
+* `yarn install` 
+* `export HOST_IP=$(ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }' | cut -f2 -d: | head -n1)`
+* `docker-compose up`
+* `node start.js`
+```
 
 ## Start Seperate Consumer and Producer
 
