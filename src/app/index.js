@@ -3,9 +3,6 @@
  * express server
  */
 
-const app_event_consumer = require("../infra/kafka/app_event_consumer")
-const app_event_producer = require("../infra/kafka/app_event_producer")
-
 module.exports = ({ masterMysql, redisPubSubClient, constants, server, logger, appEventProducer,  appEventSubscriberService, appEventConsumer }) => {
   return {
     start: () => {
@@ -16,7 +13,6 @@ module.exports = ({ masterMysql, redisPubSubClient, constants, server, logger, a
         .then(result => appEventProducer.init())
         .then(result => appEventSubscriberService.init())
         .then(result => appEventConsumer.init())
-        .then(result => appEventProducer.init())
         .then(result => server.start())
       return p
     },

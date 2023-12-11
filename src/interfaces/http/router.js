@@ -12,7 +12,6 @@ module.exports = ({
     router.use(statusMonitor())
   }
   router.use(cls.middleware)
-  router.use(appAuthoriser)
   router.use(
     cors({
       origin: [config.clientEndPoint],
@@ -29,12 +28,13 @@ module.exports = ({
       ]
     })
   )
+  router.use(appAuthoriser)
   const apiRouter = Router()
   apiRouter.use('/healthCheck', controller('health_check', 'health_check_controller'))
   apiRouter.use('/postContent', controller('post_content', 'post_content_controller'))
   apiRouter.use('/postContentAnalysis', controller('post_content', 'post_content_analysis_controller'))
+  
   router.use(`/mediaService/api/v1`, apiRouter)
-
   router.use(`/health`, controller('health_check', 'health_check_controller'))
 
   router.use(loggerMiddleware)
