@@ -9,12 +9,12 @@ Social Media Analytical Platform is a Node.js Distributed Server for computation
 
 
 - [Features](#features)
-- [Start Analytical Platform](#startAnalyticalPlatform)
-  - [Start Seperate Consumer and Producer](#startSeperateConsumerandProducer)
-  - [Authorise Expernal APPs](#authorise-apps)
+- [Start Analytical Platform](#start-analytical-platform)
+  - [Start Seperate Consumer and Producer](#start-seperate-consumer-and-producer)
+  - [Authorise Expernal APPs](#authorise-external-apps)
 - [Services](#services)
-  - [Post Content Service](#postContentService)
-  - [Post Content Analysis Service](#postContentAnalysisService)
+  - [Post Content Service](#post-content-service)
+  - [Post Content Analysis Service](#post-content-analysis-service)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -49,7 +49,7 @@ Social Media Analytical Platform is a Node.js Distributed Server for computation
 * `KAFKA_TOPIC_SUBSCRIBER=true` : pods will be up for producers and consumers both.
 * `KAFKA_TOPIC_SUBSCRIBER=false` : After changing port to `port=4002` and kafka topic suscriber flag as `KAFKA_TOPIC_SUBSCRIBER=false`, pods will be up for producers only.
 
-## Authorise Expernal APPs
+## Authorise External APPs
 
 * To authorise external APPs. Need to change `.env` params!
 * We need to put `EXTERNAL_APP_VALIDATE=true` and `EXTERNAL_APP_VERIFIER_PUBLIC_KEY` Need to change `.env` params!
