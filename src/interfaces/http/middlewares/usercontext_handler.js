@@ -1,5 +1,4 @@
 const httpContext = require('../../../infra/httpContext/cls')
-const tracer = require('dd-trace')
 var md5 = require('md5')
 
 const getClient = (req) => {
@@ -43,18 +42,6 @@ module.exports = () => {
     }
     httpContext.set('secretKeys', secretKeys)
     httpContext.set('secretHash', secretHash)
-    let span = tracer.scope().active()
-    if (span == null) {
-      span = tracer.startSpan('web.request')
-    }
-    if (span !== null && req.user != null) {
-      span.setTag('loginuser.id', req.user.id)
-      span.setTag('loginuser.email', req.user.email)
-      span.setTag('loginuser.mobile', req.user.mobile)
-      span.setTag('request_id', req.request_id)
-      span.setTag('ip', req.headers['x-forwarded-for'] || req.connection.remoteAddress)
-      span.setTag('apiName', req.path)
-    }
     next()
   }
 }

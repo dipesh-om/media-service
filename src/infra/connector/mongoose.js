@@ -7,8 +7,7 @@ module.exports = ({config, logger}) => {
         if (!MongoDB || !MongoDB.host) {
             throw new Error('Log Mongo DB config not found, disabling Log DB.')
         }
-
-        const { host, password, user, database, poolSize, authStrategy } = config.MongoDB
+        const { host, password, user, database, poolSize, authStrategy } = MongoDB
         const protocolString = authStrategy === 'LOCAL' ? 'mongodb' : 'mongodb+srv'
         let queryString = 'retryWrites=true&w=majority&readPreference=secondaryPreferred'
         const url = `${protocolString}://${host}/${database}?${queryString}`
