@@ -1,8 +1,6 @@
-const Sentry = require('@sentry/node');
 const logger = require('./logger')
 const R = require('ramda')
 const httpContext = require('../httpContext/cls')
-const processInfo = require('process');
 
 const mergeUserData = (data, meta = {}) => {
   const user = httpContext.get('currentuser')
@@ -78,15 +76,9 @@ module.exports = ({ config }) => {
       if (error && error instanceof Error) {
         error.message = `${message}  ${error.message}`
         !flgSilent && _logger.log(mergeUserData({ level: 'error', message: error }))
-        if (process.env.SENTRY_DSN !== undefined) {
-          Sentry.captureException(error)
-        }
       } else {
         if (error) {
           message = message + JSON.stringify(error)
-        }
-        if (process.env.SENTRY_DSN !== undefined) {
-          Sentry.captureMessage(message);
         }
         !flgSilent && _logger.log(mergeUserData({ level: 'error', message }))
       }
