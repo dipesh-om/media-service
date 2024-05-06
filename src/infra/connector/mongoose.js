@@ -1,9 +1,15 @@
 const mongoose = require('mongoose')
+const path = require('path')
+const fs = require('fs')
+const join = path.join
 
-module.exports = ({config, logger}) => {
+const _basename = path.basename
+const basename = _basename(__filename)
+
+module.exports = ({ config, logger }) => {
     try {
-        
-        const { MongoDB } = config
+
+        const { MongoDB, modulesPath, dbModelPath } = config
         if (!MongoDB || !MongoDB.host) {
             throw new Error('Log Mongo DB config not found, disabling Log DB.')
         }
@@ -18,13 +24,39 @@ module.exports = ({config, logger}) => {
                 bufferCommands: true,
                 autoIndex: false,
                 dbName: database,
-                user: user || null,
-                pass: password || null,
+                useUnifiedTopology : true,
+                // user: user || null,
+                // pass: password || null,
                 maxPoolSize: poolSize,
             }
         }
+
+        const dirs = []
+        const moduleNames = require(dbModelPath)
+        moduleNames.forEach(m => {
+            dirs.push(join(modulesPath, m, '/dbmodel'))
+        })
+    
+        const mongooseConn = mongoose.createConnection(connObj.url, connObj.options)
+        mongooseConn.mongoose = mongoose
+
+        const db = {}
+        for (const i in dirs) {
+            const dir = dirs[i]
+            fs.readdirSync(dir)
+                .filter(file => {
+                    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js') && (file.slice(-9, -3) === '_nosql')
+                })
+                .forEach(file => {
+                    const model = require(path.join(dir, file))(mongooseConn)
+                    mongooseConn.models[model.modelName] = model
+                })
+        }
         
-        return mongoose.createConnection(connObj.url, connObj.options)
+        
+        // mongooseConn.models = db
+        return mongooseConn
+
     } catch (e) {
         logger.error('Unable to connect to Log Mongo DB :  ', e)
         process.exit(0)

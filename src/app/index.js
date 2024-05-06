@@ -10,9 +10,9 @@ module.exports = ({ masterMysql, redisPubSubClient, constants, server, logger, a
         .resolve()
         .then(result => masterMysql.sequelize.authenticate())
         .then(result => redisPubSubClient.subscribe(constants.redisSubscribeChannels))
-        .then(result => appEventProducer.init())
-        .then(result => appEventSubscriberService.init())
-        .then(result => appEventConsumer.init())
+        // .then(result => appEventProducer.init())
+        // .then(result => appEventSubscriberService.init())
+        // .then(result => appEventConsumer.init())
         .then(result => server.start())
       return p
     },

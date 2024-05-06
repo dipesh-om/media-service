@@ -1,3 +1,5 @@
+const path = require('path')
+const join = path.join
 const baseProperties = {
   MongoDB: {
     host: process.env.MONGO_DB_HOST,
@@ -7,7 +9,9 @@ const baseProperties = {
     poolSize: process.env.MONGO_DB_POOL_SIZE ? parseInt(process.env.MONGO_DB_POOL_SIZE, 10) : 5,
     authStrategy: process.env.MONGO_DB_AUTH_STRATEGY || null,
     password: process.env.MONGO_DB_PASSWORD
-  }
+  },
+  modulesPath: join(__dirname, './../modules/'),
+  dbModelPath: join(__dirname, '/../infra/mongoose/db_exposed_models')
 }
 
 module.exports = {

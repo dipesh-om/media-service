@@ -51,7 +51,7 @@ module.exports = ({ logger, config }) => {
           fs
             .readdirSync(dir)
             .filter(file => {
-              return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js')
+              return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js' && file.slice(-7, -3) === '_sql')
             })
             .forEach(file => {
               const model = require(path.join(dir, file))(sequelize, Sequelize.DataTypes)
@@ -87,7 +87,7 @@ module.exports = ({ logger, config }) => {
 
     const ENV = process.env.NODE_ENV || 'development'
     const getConfig = (databaseName, databaseType) => {
-        const configPath = path.join(config.databaseConfigPath, `./mysql_${databaseType.toLowerCase()}.js`)
+        const configPath = path.join(config.sqlConfigPath, `./mysql_${databaseType.toLowerCase()}.js`)
         logger.info(`path -> ${configPath}`)
         if (fs.existsSync(configPath)) {
             const dbEnvConfig = require(configPath)[ENV]

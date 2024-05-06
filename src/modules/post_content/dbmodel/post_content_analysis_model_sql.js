@@ -2,6 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
 
+  
   /**
    * 
     CREATE TABLE media.post_content_analysis (

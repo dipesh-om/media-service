@@ -24,8 +24,9 @@ const config = Object.assign({
   env: ENV,
   ... primaryRedisConfig,
   ... primaryMongoConfig,
-  databaseConfigPath: `${__dirname}/`,
-  redisConfigPath: `${__dirname}/`
+  sqlConfigPath: `${__dirname}/`,
+  redisConfigPath: `${__dirname}/`,
+  mongooseConfigPath:  `${__dirname}/`
 }, envConfig)
 
 module.exports = config
