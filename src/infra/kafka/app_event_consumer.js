@@ -9,7 +9,7 @@ module.exports = ({ config, logger, constants }) => {
     const kafka = new Kafka({
         logLevel: logLevel.INFO,
         brokers: [`${host}:9092`],
-        clientId: 'app-media-service-consumer',
+        clientId: 'app-saathi-service-consumer',
     })
 
     const consumer = kafka.consumer({ groupId: config.KAFKA_GROUP_ID })
@@ -46,7 +46,7 @@ module.exports = ({ config, logger, constants }) => {
 
         if ( !config.KAFKA_TOPIC_SUBSCRIBER ) { return } 
         try {
-            await consumer.connect().catch(e => console.error(`[app-media-service-consumer] ${e.message}`, e))
+            await consumer.connect().catch(e => console.error(`[app-saathi-service-consumer] ${e.message}`, e))
             for (const [key, value] of Object.entries(listenerConfig)) {
                 await consumer.subscribe({ topic: key, fromBeginning: true })
             }
@@ -58,7 +58,7 @@ module.exports = ({ config, logger, constants }) => {
         await consumer.run({
             eachMessage: async ({ topic, partition, message }) => {
                 const eventName = `${message.key}`, value = `${message.value}`
-                logger.info(`[app-media-service-consumer] : ${topic} : ${value}`)
+                logger.info(`[app-saathi-service-consumer] : ${topic} : ${value}`)
 
                 if (listenerConfig[eventName]) {
                     for (let i in listenerConfig[eventName]) {
@@ -66,7 +66,7 @@ module.exports = ({ config, logger, constants }) => {
                         try {
                             await listnerConfig.listener[`handleEvent${eventName}`](eventName, JSON.parse(value))
                         } catch (e) {
-                            logger.error('[app-media-service-consumer] : ${topic} : ${value} error :  ', e)
+                            logger.error('[app-saathi-service-consumer] : ${topic} : ${value} error :  ', e)
                         }
                     }
                 }

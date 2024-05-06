@@ -9,14 +9,14 @@ module.exports = ({ config, logger, constants }) => {
     const kafka = new Kafka({
         logLevel: logLevel.DEBUG,
         brokers: [`${host}:9092`],
-        clientId: 'app-media-service-producer',
+        clientId: 'app-saathi-service-producer',
     })
 
     const producer = kafka.producer()
 
     const init = async () => {
         try {
-            await producer.connect().catch(e => console.error(`[app-media-service-producer] ${e.message}`, e),)
+            await producer.connect().catch(e => console.error(`[app-saathi-service-producer] ${e.message}`, e),)
         } catch (e) {
             logger.error('Unable to publish app event producer :  ', e)
             process.exit(0)
@@ -53,7 +53,7 @@ module.exports = ({ config, logger, constants }) => {
         // And also we can send multiple topics for mulitiple listner
         return producer
             .send({ topic: eventName, compression: CompressionTypes.GZIP, messages: [{ key: eventName, value: JSON.stringify(message) }] })
-            .catch(e => console.error(`[app-media-service-producer] ${e.message}`, e))
+            .catch(e => console.error(`[app-saathi-service-producer] ${e.message}`, e))
     }
 
     return { init, publishEvent }

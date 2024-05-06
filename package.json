@@ -1,7 +1,7 @@
 {
-  "name": "media-service",
+  "name": "main-be",
   "version": "1.0.0",
-  "description": "Social Media Service and Analytics Platform",
+  "description": "Main backend service for saathi vertical apps",
   "main": "start.js",
   "scripts": {
     "start": "node start.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://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@github.com/dipesh-om/media-service.git"
+    "url": "https://github.com/GreyBlueVentures/main-be"
   },
   "author": "Dipesh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dipesh-om/media-service/issues"
+    "url": "https://github.com/GreyBlueVentures/main-be/issues"
   },
-  "homepage": "https://github.com/dipesh-om/media-service#readme",
+  "homepage": "https://github.com/GreyBlueVentures/main-be#readme",
   "dependencies": {
     "@babel/runtime": "^7.21.0",
     "@maxmind/geoip2-node": "^3.5.0",

@@ -19,10 +19,10 @@ module.exports = ({
       allowedHeaders: [
         'Content-Type',
         'Authorization',
-        'whjr-segment-anonymousid',
-        'whjr-amplitude-sessionid',
-        'whjr-ws-request-id',
-        'whjr-ws-name',
+        'saathi-segment-anonymousid',
+        'saathi-amplitude-sessionid',
+        'saathi-ws-request-id',
+        'saathi-ws-name',
         'x-app-name',
         'cjevent'
       ]
